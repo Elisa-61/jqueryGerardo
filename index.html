@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.container1{
+    max-width:max-content;
+    margin-left: 5cm;
+    margin-left: 5cm;
+    margin-top: 2cm;
+}
+.display{
+  color:blue;
+  font-weight:bold;
+}
+.con{
+  background-color: aquamarine;
+  width: 70px;
+  border: 1px solid yellow;
+}
+.box{
+  position: absolute;
+  background-color: yellowgreen;
+  left:30px;
+  width:70px;
+  height:70px;
+  margin:4px;
+}
+.color{
+  background-color: gray;
+}
+ .pink{
+   background-color: pink;
+ } 
+ .scroll-top{
+   float: right;
+ }
+
+
+
+</style>
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
+    <div class="container1">
+
+     
+<!-- Exercise2-->
+        <div class="form-check">
+            <input type="checkbox" class="check-input" id="accept1">
+            <label class="form-check-label" for="exampleCheck1">I accept</label>
+          </div>
+          <input id="submit" class="btn btn-primary" disabled="disabled" name="Submit" type="submit" value="Submit" />
+ <!--Exercise3-->        
+        </form>
+        <br> <br>
+        <table class="table">
+            <thead>
+              <tr class="color">
+                <th scope="col">Student</th>
+                <th scope="col">Grade</th>
+                
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+               
+                <td>Elizabeth</td>
+                <td>1.2</td>
+               
+              </tr>
+              <tr class="color">
+                
+                <td>Grace</td>
+                <td>1.5</td>
+                
+              </tr>
+              <tr>
+                
+                <td>Jesselle</td>
+                <td>1.2</td>
+               
+              </tr>
+              <tr class="color" >
+                
+                <td>Elloise</td>
+                <td>1.3</td>
+                
+              </tr>
+              <tr >
+                
+                <td>Eli</td>
+                <td>1.3</td>
+                
+              </tr>
+            </tbody>
+          </table>
+          <button type="button"  id="tabutton"class="btn btn-warning recolor">Change Alternate Color</button>
+<br><br>
+<!-- Exercise4-->
+          <input type="text" name="text-box" class="input-box" maxlength="15">
+<p>
+    <span class="char">15</span>
+    "Character(s)remains"
+</p>
+<br><br>
+<!--Number 5 -->
+<br>
+<button class="btn btn-primary add-option">Add</button>
+<select name="dropdown" class="dropdown"></select>
+
+<!--Number 6 -->
+<button class="btn btn-danger remove-option">Remove</button>
+
+<!--Exercise7-->
+<br><br>
+<div class="display"></div>
+
+<!--Exercise8-->
+<br>
+<br>
+<input type="submit" value=" Time heals" class="btn btn-success change">
+<!--Exercise9-->
+
+<!--<br><br><button class="btn btn-warning recolor"> Change Alternative Color</button>-->
+<!--Exercise10-->
+<br><br>
+<p>Input Amount:
+<input type="text" class="int"></p>
+
+<!--Exercise11-->
+<button id="animate"class="btn btn-primary">Animate</button>
+<br>
+<br>
+<p class="con">Time</p>
+<!--Exercise12-->
+<div>
+<button class="btn btn-primary up">Button Up</button>
+<button class="btn btn-primary down">Button Down</button>
+<br><br>
+<button class="btn btn-primary left">Button Left</button>
+<button class="btn btn-primary right">Button Right</button>
+<div class=" box">
+
+</div>
+
+</div>
+ 
+</div>
+
+
+<!-- Exercise1-->
+<button type="button" class="btn btn-warning scroll-top">Scroll Top</button>
+
+<script>  
+$(document).ready(function(){
+  //Exercise1
+  $('.scroll-top').on('click', function () {
+            $('html').animate({ scrollTop: 0 }, 'slow');
+        })
+     // exercise 2
+    $('#accept1').on('click',function() {
+	if ($('#submit').is(':disabled')) {
+    	$('#submit').removeAttr('disabled');
+    } else {
+    	$('#submit').attr('disabled', 'disabled');
+    }
+})
+//Exercise3
+
+ $('.tr:even').addClass('color');
+
+   //exercise4
+   $('.input-box').on('keyup',function(){
+    $('.char').text(15-$(this).val().length);
+   })
+
+
+//Number 5
+$('.add-option').on('click', function() {
+    var option = $('.input-box').val();
+       $('.dropdown').append('<option value=" ' + option + ' ">' + option + '</option>')
+                    }) 
+
+//Number 6
+ $('.remove-option').on('click', function() {
+    var optionVal = $('.dropdown').val();
+        $(".dropdown option[value='" + optionVal + "']").remove();
+                       
+ }) // EndNumber 6
+//Exercise7
+$(".input-box").on('keyup',function(){
+    $('.display').text($(this).val());
+})
+//Exercise8
+$(".change").on('click', function(){
+  if($(".change").val() == " Time heals"){
+    $(".change").val("All wounds");
+  }else{
+    $(".change").val("Time heals");
+  }
+})
+//Exercise9
+$('.recolor').on('click', function(){
+  $('.color').removeClass('.color').addClass('pink');
+})
+//Exercise10
+$('.int').on('keyup', function(){
+  this.value = this.value.replace(/[^0-9\.]/g, '');
+})
+//Exercise11
+$('#animate').on('click', function(){
+  $(".con").animate({
+   // width:"70%",
+    opacity:0.4,
+    marginLeft: "0.6in",
+    fontSize:"3em",
+    borderWidth: "10px"
+  },500).css("width","70%");
+})
+//Exercise12
+$('.right').on('click', function(){
+  $('.box').animate({left: '+=50px'}, 'slow');
+})
+$('.left').on('click', function(){
+  $('.box').animate({left: '-=50px'}, 'slow');
+})
+$('.up').on('click', function(){
+  $('.box').animate({top: '-=50px'}, 'slow');
+})
+$('.down').on('click', function(){
+  $('.box').animate({top: '+=50px'}, 'slow');
+})
+})
+
+</script>
+
+</body>
+</html>
